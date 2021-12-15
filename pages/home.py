@@ -24,6 +24,7 @@ def app():
 
     #input de distancia que quiere caminar
     distance = st.text_input("¿Cuántos metros quieres caminar?", "500")
+    
 
     #input del tipo de comida
     df = sp.load_data()

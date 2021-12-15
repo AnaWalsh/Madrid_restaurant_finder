@@ -26,7 +26,7 @@ from geopy.geocoders import Nominatim
 
 
 def load_data():
-    return pd.read_csv('data/tripadvisor_latlon.csv')
+    return pd.read_csv('data/tripadvisor_latlon_v2.csv')
 
 def get_uniques(df):
     return list(df.type.unique())
@@ -145,6 +145,12 @@ def map(df, coord):
             
             
         elif row["type"] == "Pub con cerveza artesanal":        
+            icono = Icon(color = "purple",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
+
+        elif row["type"] == "Marisco":        
             icono = Icon(color = "purple",
                         prefix="fa",
                         icon="circle",
