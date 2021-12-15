@@ -89,7 +89,6 @@ def map(df, coord):
     map = folium.Map(location=[inicial_lat,inicial_long], zoom_start=15)
 
     for i,row in df.iterrows():
-
     
         dic = {"location": [row["latitude"], row["longitude"]], "tooltip": row["name"]}
 
@@ -155,7 +154,7 @@ def map(df, coord):
         mark = Marker(**dic, icon=icono)
         mark.add_to(map)
 
-        return folium_static(map)
+    return folium_static(map)
 
 
 
