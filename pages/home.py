@@ -8,9 +8,9 @@ def app():
     #portada = Image.open("images/portada2.jpg")
     #st.image(portada, use_column_width=True)
     st.write("""
-    # My awesome Dashboard
-    ## Son headers reinas 🚀
-    Con Jake el perro y Finn el humano lo pasaremos *guay*
+    # La Cucharona 🥄 
+    ## 
+    ...
     """)
     #f=codecs.open("data/pedrito.html", 'r')
     #pedro = f.read()
@@ -30,10 +30,18 @@ def app():
     food_type = sp.get_uniques(df)
 
 
-    food_type = st.selectbox("¿Qué tipo de restaurante te apetece?", ["Elige un tipo"] + food_type)
+    food_type_ = st.selectbox("¿Qué tipo de restaurante te apetece?", ["Elige un tipo"] + food_type)
 
     coord = sp.get_coordenadas(location)
 
-    df = sp.query(distance, coord, food_type)
+    df = sp.query(distance, coord, food_type_)
+ 
 
-    st.table(df)
+
+    if food_type_ == "Elige un tipo": 
+        st.write("we need info")
+    else:
+        df_map= sp.query_for_map(distance, coord, food_type_)
+        print(df_map.columns)
+        st.dataframe(df)
+        sp.map(df_map, coord)
