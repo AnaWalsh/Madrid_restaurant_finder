@@ -98,53 +98,53 @@ def map(df, coord):
                         icon="circle",
                         icon_color="black")
 
-        elif row["type"] == 'Italiana':
+        elif row["type"] == 'Bar':
             icono = Icon(color = "lightblue",
                         prefix="fa",
                         icon="circle",
                         icon_color="black")
 
             
-        elif row["type"] == "Internacional":        
+        elif row["type"] == "Asador":        
             icono = Icon(color = "orange",
                         prefix="fa",
                         icon="circle",
                         icon_color="black")
             
-        elif row["type"] == "Confiterías/panaderías":        
+        elif row["type"] == "Café y postres":        
             icono = Icon(color = "gray",
                         prefix="fa",
                         icon="circle",
                         icon_color="black")
             
-        elif row["type"] == "Japonesa":        
+        elif row["type"] == "Europea":        
             icono = Icon(color = "cadetblue",
                         prefix="fa",
                         icon="circle",
                         icon_color="black")
             
             
-        elif row["type"] == "Bar":        
+        elif row["type"] == "Latina":        
             icono = Icon(color = "lightgreen",
                         prefix="fa",
                         icon="circle",
                         icon_color="black")
             
             
-        elif row["type"] == "India":        
+        elif row["type"] == "Internacional":        
             icono = Icon(color = "lightblue",
                         prefix="fa",
                         icon="circle",
                         icon_color="black")           
             
-        elif row["type"] == "Mexicana":        
+        elif row["type"] == "Italiana":        
             icono = Icon(color = "pink",
                         prefix="fa",
                         icon="circle",
                         icon_color="black")
             
             
-        elif row["type"] == "Pub con cerveza artesanal":        
+        elif row["type"] == "Asiática":        
             icono = Icon(color = "purple",
                         prefix="fa",
                         icon="circle",
@@ -155,8 +155,45 @@ def map(df, coord):
                         prefix="fa",
                         icon="circle",
                         icon_color="black")
-            
-        
+
+        elif row["type"] == "Americana":        
+            icono = Icon(color = "purple",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
+
+        elif row["type"] == "India":        
+            icono = Icon(color = "purple",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
+
+        elif row["type"] == "Mexicana":        
+            icono = Icon(color = "purple",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
+
+
+        elif row["type"] == "Filipina":        
+            icono = Icon(color = "purple",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
+
+        elif row["type"] == "Marroquí":       
+            icono = Icon(color = "purple",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
+
+        elif row["type"] == "Fusión":        
+             icono = Icon(color = "purple",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
+
+                    
         mark = Marker(**dic, icon=icono)
         mark.add_to(map)
 
