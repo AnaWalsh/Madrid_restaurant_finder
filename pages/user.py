@@ -16,7 +16,7 @@ from streamlit_folium import folium_static
 def app():
     #st.image(portada, use_column_width=True)
     st.write("""
-    # What kind of restaurants can Madrid offer?
+    # ¿Cómo son los restaurantes que ofrece Madrid?
     """)
     portada = Image.open("images/file-20180918-158240-1jd9gm6.jpeg")
     st.image(portada, use_column_width=True)
@@ -40,8 +40,11 @@ def app():
     st.write(""" ## Restaurantes clasificados por tipo """)
     st.plotly_chart(sp.graph_1(df_visual2))
 
-    st.write(""" ## Restaurantes: tipo y precio """)
+    st.write(""" ## Cómo están de precio? 💸 """)
     st.plotly_chart(sp.graph_2(df_visual))
+
+
+    st.write(""" ## Conclusiones 📝 """)
 
 
    

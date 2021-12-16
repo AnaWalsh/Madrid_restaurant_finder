@@ -190,7 +190,7 @@ def map(df, coord):
                         icon_color="black")
 
         elif row["type"] == "Marisco":        
-            icono = Icon(color = "purple",
+            icono = Icon(color = "lightblue",
                         prefix="fa",
                         icon="circle",
                         icon_color="black")
@@ -208,7 +208,7 @@ def map(df, coord):
                         icon_color="black")
 
         elif row["type"] == "Mexicana":        
-            icono = Icon(color = "purple",
+            icono = Icon(color = "lightgreen",
                         prefix="fa",
                         icon="circle",
                         icon_color="black")
@@ -227,6 +227,13 @@ def map(df, coord):
                         icon_color="black")
 
         elif row["type"] == "Fusión":        
+             icono = Icon(color = "purple",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
+
+
+        elif row["type"] == "Otros":        
              icono = Icon(color = "purple",
                         prefix="fa",
                         icon="circle",
@@ -287,7 +294,6 @@ def map_per_price2(df):
             
         mark = Marker(**dic, icon=icono)
         mark.add_to(map)
-    
     #return map
     return folium_static(map)
     

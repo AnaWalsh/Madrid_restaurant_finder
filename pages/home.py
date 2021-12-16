@@ -4,12 +4,13 @@ import streamlit.components.v1 as components
 import codecs
 import pages.support as sp
 
+
 def app():
-    portada = Image.open("images/madrid-city-view.jpeg")
+    portada = Image.open("images/Restaurant finder.jpg")
     st.image(portada, use_column_width=True)
     st.write("""
     # 
-    ## 🍴 Find the kind of restaurant you fancy wherever you are.
+    ## Encuentra el restaurante que quieras allá donde estés!! ⚡️
     """)
     #f=codecs.open("data/pedrito.html", 'r')
     #pedro = f.read()
@@ -17,7 +18,7 @@ def app():
     #components.html(pedro,height=550,scrolling=True)
 
     st.write("""
-    ### ¿Dónde estás?
+    ### Dónde estás? 📍
     """) 
     #input de ubicacion del usuario
     location = st.text_input("", "Paseo de la Chopera 14 ") 
@@ -26,7 +27,7 @@ def app():
 
 
     st.write("""
-    ### ¿Cuántos metros quieres caminar?
+    ### Cuánto estás dispuesto a andar?
     """) 
     #input de distancia que quiere caminar
     distance = st.text_input(" ", "500")
@@ -37,7 +38,7 @@ def app():
     food_type = sp.get_uniques(df)
 
     st.write("""
-    ### ¿Qué tipo de restaurante te apetece?
+    ### Qué tipo de comida te apetece? 🍕🌮🍰🍤
     """) 
     food_type_ = st.selectbox(" ", ["Elige un tipo"] + food_type)
 
@@ -51,21 +52,24 @@ def app():
     elif food_type_ == "Todos los restaurantes": # condicion cuando queremos todos los restaurantes
         df_map_1 = sp.query_for_map2(distance, coord)
         if df_map_1.shape[0] == 0:
-            st.write("Sorry... we haven't found any restaurants 😢")
-            st.write("Try looking for another type of food ⚡️")
+            st.write("Lo siento... no hemos encontrado ningún restaurante😢")
+            st.write("Prueba haciendo una nueva búsqueda ⚡️")
         else:
             df_mostrar = df_map_1.drop(["latitude", 'longitude'], axis = 1)
             st.dataframe(df_mostrar)
-            st.write("tenemos" , df_mostrar.shape[0], "restaurantes")
+            st.write("Hemos encontrado" , df_mostrar.shape[0], "restaurantes")
             sp.map(df_map_1, coord)
+           
+        
+    
 
     else: # condición cuando pasamos un filtro de comida
         df_map= sp.query_for_map(distance, coord, food_type_)
         if df_map.shape[0] == 0:
-            st.write("Sorry... we haven't found any restaurants 😢")
-            st.write("Try looking for another type of food ⚡️")
+            st.write("Lo siento... no hemos encontrado ningún restaurante 😢")
+            st.write("Prueba haciendo una nueva búsqueda ⚡️")
         else:
             df_mostrar = df_map.drop(["latitude", 'longitude'], axis = 1)
             st.dataframe(df_mostrar)
-            st.write("tenemos" , df_mostrar.shape[0], "restaurantes")
+            st.write("Hemos encontrado" , df_mostrar.shape[0], "restaurantes")
             sp.map(df_map, coord)
