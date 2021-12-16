@@ -44,9 +44,6 @@ def app():
     st.plotly_chart(sp.graph_2(df_visual))
 
 
-    st.write(""" ## Conclusiones 📝 """)
-
-
    
 
 

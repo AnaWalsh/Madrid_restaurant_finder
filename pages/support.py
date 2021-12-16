@@ -249,8 +249,8 @@ def map(df, coord):
 
 def graph_1 (df):
 
-    fig = px.bar(df, x=df.type.value_counts().index, y=df.type.value_counts().values)
-
+    fig = px.bar(df, x =df.type.value_counts().index, y=df.type.value_counts().values)
+    
     return fig
 
 
