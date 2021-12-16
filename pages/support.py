@@ -252,8 +252,8 @@ def graph_2 (df):
     fig = px.bar(df, x="type", y="price", color='price_2')
     return fig
 
-@st.cache()
-def map_per_price(df):
+
+def map_per_price2(df):
 
     inicial_lat = 40.4167047
     inicial_long =  -3.7035825
@@ -287,5 +287,7 @@ def map_per_price(df):
             
         mark = Marker(**dic, icon=icono)
         mark.add_to(map)
-
+    
+    #return map
     return folium_static(map)
+    

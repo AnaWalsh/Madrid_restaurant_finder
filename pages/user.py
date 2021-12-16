@@ -7,6 +7,11 @@ from streamlit.type_util import data_frame_to_bytes
 import pages.support as sp
 import pandas as pd
 
+from folium import Choropleth, Circle, Marker, Icon, Map
+from folium.plugins import HeatMap, MarkerCluster
+
+from streamlit_folium import folium_static
+
 
 def app():
     #portada = Image.open("images/portada2.jpg")
@@ -24,6 +29,7 @@ def app():
 
     
     sp.map_per_price(df_visual2)
+    #folium_static(sp.map_per_price(df_visual2))
 
 
 
