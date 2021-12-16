@@ -21,14 +21,19 @@ def app():
     """)
     portada = Image.open("file-20180918-158240-1jd9gm6.jpeg")
     st.image(portada, use_column_width=True)
+
+
+    f=codecs.open("data/kepler.gl.html", 'r')
+    mapa = f.read()
+    components.html(mapa,height=550,width=900,scrolling=True)
     
 
     df_visual = sp.load_data2() #dataset groupby
     df_visual2 = sp.load_data() #dataset general
-    st.write("mapa")
+    #st.write("mapa")
 
     
-    sp.map_per_price(df_visual2)
+    #sp.map_per_price(df_visual2)
     #folium_static(sp.map_per_price(df_visual2))
 
 
