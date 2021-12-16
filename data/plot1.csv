@@ -1,0 +1,37 @@
+,type,price_2,price
+0,Americana,Barato,4
+1,Americana,Medio,21
+2,Asador,Barato,1
+3,Asador,Caro,8
+4,Asador,Medio,13
+5,Asiática,Barato,2
+6,Asiática,Caro,8
+7,Asiática,Medio,23
+8,Bar,Barato,13
+9,Bar,Medio,24
+10,Café y postres,Barato,19
+11,Café y postres,Medio,20
+12,Europea,Caro,1
+13,Europea,Medio,12
+14,Filipina,Medio,1
+15,Fusión,Medio,2
+16,India,Caro,1
+17,India,Medio,8
+18,Internacional,Caro,4
+19,Internacional,Medio,20
+20,Italiana,Barato,7
+21,Italiana,Caro,1
+22,Italiana,Medio,46
+23,Latina,Barato,2
+24,Latina,Caro,2
+25,Latina,Medio,12
+26,Marisco,Caro,7
+27,Marisco,Medio,11
+28,Marroquí,Medio,1
+29,Mediterránea,Barato,14
+30,Mediterránea,Caro,25
+31,Mediterránea,Medio,137
+32,Mexicana,Barato,3
+33,Mexicana,Medio,14
+34,Otros,Barato,3
+35,Otros,Medio,6

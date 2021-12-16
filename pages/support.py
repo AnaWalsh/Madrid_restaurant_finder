@@ -34,6 +34,10 @@ import plotly.graph_objects as go
 def load_data():
     return pd.read_csv('data/tripadvisor_latlon_v2.csv')
 
+def load_data2():
+    return pd.read_csv('data/plot1.csv')
+
+
 def get_uniques(df):
     return ['Mediterránea', 'Bar', 'Asador', 'Café y postres', 'Europea',
        'Latina', 'Internacional', 'Italiana', 'Asiática', 'Marisco',
@@ -109,8 +113,6 @@ def query_for_map2(distance, coordinate):
                                                   "$maxDistance": (int(distance))}}}
     x2 = list(restaurants.find(response, proyec2))
     return pd.DataFrame(x2)
-
-
 
 
 def map(df, coord):
@@ -233,20 +235,52 @@ def map(df, coord):
 
 
 
-#def graph_1 (df):
+def graph_1 (df):
 
     fig = px.bar(df, x=df.type.value_counts().index, y=df.type.value_counts().values)
 
-    return fig.show()
+    return fig
 
 
+def graph_2 (df):
 
+    fig = px.bar(df, x="type", y="price", color='price_2')
+    return fig
 
+@st.cache()
+def map_per_price(df):
 
+    inicial_lat = 40.4167047
+    inicial_long =  -3.7035825
 
+    map = folium.Map(location=[inicial_lat,inicial_long], zoom_start=15)
 
+    for i,row in df.iterrows():
+    
+        dic = {"location": [row["latitude"], row["longitude"]], "tooltip": row["name"]}
 
+        if row["price_2"] == "Medio":
+            icono = Icon(color = "green",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
 
+        elif row["price_2"] == "Barato":
+            icono = Icon(color = "lightblue",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
 
+            
+        elif row["price_2"] == "Caro":        
+            icono = Icon(color = "orange",
+                        prefix="fa",
+                        icon="circle",
+                        icon_color="black")
+            
+        
+            
+        mark = Marker(**dic, icon=icono)
+        mark.add_to(map)
 
-
+    return folium_static(map)

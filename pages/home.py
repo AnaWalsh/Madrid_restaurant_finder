@@ -5,10 +5,10 @@ import codecs
 import pages.support as sp
 
 def app():
-    #portada = Image.open("images/portada2.jpg")
-    #st.image(portada, use_column_width=True)
+    portada = Image.open("madrid-city-view.jpeg")
+    st.image(portada, use_column_width=True)
     st.write("""
-    # La Cucharona 🥄 
+    # 
     ## 
     ...
     """)
@@ -19,7 +19,7 @@ def app():
 
        
     #input de ubicacion del usuario
-    location = st.text_input("¿Dónde estás?", "Paseo de la Chopera 14")
+    location = st.text_input("¿Dónde estás?", "Paseo de la Chopera 14 ")
     #coordinate = mp.get_coordenadas(location)
 
     #input de distancia que quiere caminar
