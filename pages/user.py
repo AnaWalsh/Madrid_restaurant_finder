@@ -14,12 +14,11 @@ from streamlit_folium import folium_static
 
 
 def app():
-    #portada = Image.open("images/portada2.jpg")
     #st.image(portada, use_column_width=True)
     st.write("""
-    # ¿Cómo es la oferta de restaurantes en Madrid?
+    # What kind of restaurants can Madrid offer?
     """)
-    portada = Image.open("file-20180918-158240-1jd9gm6.jpeg")
+    portada = Image.open("images/file-20180918-158240-1jd9gm6.jpeg")
     st.image(portada, use_column_width=True)
 
 

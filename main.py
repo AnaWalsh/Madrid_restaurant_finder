@@ -9,8 +9,8 @@ from pages import home, user
 
 app = MultiPage()
 
-app.add_page("Que buscas", home.app)
-app.add_page("Resumen datos",user.app)
+app.add_page("Search", home.app)
+app.add_page("Data",user.app)
 
 
 app.run()

@@ -5,7 +5,7 @@ import codecs
 import pages.support as sp
 
 def app():
-    portada = Image.open("madrid-city-view.jpeg")
+    portada = Image.open("images/madrid-city-view.jpeg")
     st.image(portada, use_column_width=True)
     st.write("""
     # 
@@ -51,7 +51,8 @@ def app():
     elif food_type_ == "Todos los restaurantes": # condicion cuando queremos todos los restaurantes
         df_map_1 = sp.query_for_map2(distance, coord)
         if df_map_1.shape[0] == 0:
-            st.write("oh oh... we haven't found any restaurants 🙁")
+            st.write("Sorry... we haven't found any restaurants 😢")
+            st.write("Try looking for another type of food ⚡️")
         else:
             df_mostrar = df_map_1.drop(["latitude", 'longitude'], axis = 1)
             st.dataframe(df_mostrar)
@@ -61,7 +62,8 @@ def app():
     else: # condición cuando pasamos un filtro de comida
         df_map= sp.query_for_map(distance, coord, food_type_)
         if df_map.shape[0] == 0:
-            st.write("oh oh... we haven't found any restaurants 🙁")
+            st.write("Sorry... we haven't found any restaurants 😢")
+            st.write("Try looking for another type of food ⚡️")
         else:
             df_mostrar = df_map.drop(["latitude", 'longitude'], axis = 1)
             st.dataframe(df_mostrar)
