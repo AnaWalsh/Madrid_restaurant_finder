@@ -19,7 +19,7 @@ def app():
 
        
     #input de ubicacion del usuario
-    location = st.text_input("¿Dónde estás?", "Paseo de la Chopera 14 ")
+    location = st.text_input("", "Paseo de la Chopera 14 ") 
     #coordinate = mp.get_coordenadas(location)
 
     #input de distancia que quiere caminar
@@ -43,13 +43,20 @@ def app():
         st.stop()
     elif food_type_ == "Todos los restaurantes": # condicion cuando queremos todos los restaurantes
         df_map_1 = sp.query_for_map2(distance, coord)
-        df_mostrar = df_map_1.drop(["latitude", 'longitude'], axis = 1)
-        st.dataframe(df_mostrar)
-        st.write("tenemos" , df_mostrar.shape[0], "restaurantes")
-        sp.map(df_map_1, coord)
+        if df_map_1.shape[0] == 0:
+            st.write("oh oh...")
+        else:
+            df_mostrar = df_map_1.drop(["latitude", 'longitude'], axis = 1)
+            st.dataframe(df_mostrar)
+            st.write("tenemos" , df_mostrar.shape[0], "restaurantes")
+            sp.map(df_map_1, coord)
+
     else: # condición cuando pasamos un filtro de comida
         df_map= sp.query_for_map(distance, coord, food_type_)
-        df_mostrar = df_map.drop(["latitude", 'longitude'], axis = 1)
-        st.dataframe(df_mostrar)
-        st.write("tenemos" , df_mostrar.shape[0], "restaurantes")
-        sp.map(df_map, coord)
+        if df_map.shape[0] == 0:
+            st.write("oh oh...")
+        else:
+            df_mostrar = df_map.drop(["latitude", 'longitude'], axis = 1)
+            st.dataframe(df_mostrar)
+            st.write("tenemos" , df_mostrar.shape[0], "restaurantes")
+            sp.map(df_map, coord)

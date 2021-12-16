@@ -92,7 +92,10 @@ def query_for_map(distance, coordinate, food_type):
     response = {"coordinates_v2": {"$near": {"$geometry":{'type': 'Point', 'coordinates':coordinate},
                                                   "$maxDistance": (int(distance))}},'type': food_type}
     x2 = list(restaurants.find(response, proyec))
+  
     return pd.DataFrame(x2)
+    
+
 
 
 
@@ -112,7 +115,9 @@ def query_for_map2(distance, coordinate):
     response = {"coordinates_v2": {"$near": {"$geometry":{'type': 'Point', 'coordinates':coordinate},
                                                   "$maxDistance": (int(distance))}}}
     x2 = list(restaurants.find(response, proyec2))
+
     return pd.DataFrame(x2)
+    
 
 
 def map(df, coord):
