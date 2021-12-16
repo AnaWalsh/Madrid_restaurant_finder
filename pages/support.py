@@ -25,11 +25,20 @@ import re
 from geopy.geocoders import Nominatim
 
 
+import plotly.express as px
+import seaborn as sns
+import pandas as pd
+import plotly.graph_objects as go
+
+
 def load_data():
     return pd.read_csv('data/tripadvisor_latlon_v2.csv')
 
 def get_uniques(df):
-    return list(df.type.unique())
+    return ['Mediterránea', 'Bar', 'Asador', 'Café y postres', 'Europea',
+       'Latina', 'Internacional', 'Italiana', 'Asiática', 'Marisco',
+       'Americana', 'India', 'Otros', 'Mexicana', 'Filipina', 'Marroquí',
+       'Fusión', 'Todos los restaurantes']
 
 def get_coordenadas(address):
     """
@@ -75,11 +84,34 @@ def query_for_map(distance, coordinate, food_type):
     default_value_1 = "Paseo de la chopera 14, Madrid"
     default_value_2 = 100
  
-    proyec2 = { "_id":0}
+    proyec = { "_id":0, "name": 1, "ranking":1, "price_2": 1, "latitude":1, "longitude": 1, 'type': 1}
     response = {"coordinates_v2": {"$near": {"$geometry":{'type': 'Point', 'coordinates':coordinate},
                                                   "$maxDistance": (int(distance))}},'type': food_type}
+    x2 = list(restaurants.find(response, proyec))
+    return pd.DataFrame(x2)
+
+
+
+def query_for_map2(distance, coordinate):
+
+    client = MongoClient("localhost:27017")
+    db = client.get_database("PROJECT")
+    collection = db["Restaurants"]
+    collection.create_index([("type_point_", "2dsphere")])
+    
+    restaurants = db.get_collection("Restaurants")
+
+    default_value_1 = "Paseo de la chopera 14, Madrid"
+    default_value_2 = 100
+ 
+    proyec2 = { "_id":0, "name": 1, "ranking":1, "price_2": 1, "latitude":1, "longitude": 1, 'type': 1}
+    response = {"coordinates_v2": {"$near": {"$geometry":{'type': 'Point', 'coordinates':coordinate},
+                                                  "$maxDistance": (int(distance))}}}
     x2 = list(restaurants.find(response, proyec2))
     return pd.DataFrame(x2)
+
+
+
 
 def map(df, coord):
 
@@ -98,7 +130,7 @@ def map(df, coord):
                         icon="circle",
                         icon_color="black")
 
-        elif row["type"] == 'Bar':
+        elif row["type"] == "Bar":
             icono = Icon(color = "lightblue",
                         prefix="fa",
                         icon="circle",
@@ -198,6 +230,14 @@ def map(df, coord):
         mark.add_to(map)
 
     return folium_static(map)
+
+
+
+#def graph_1 (df):
+
+    fig = px.bar(df, x=df.type.value_counts().index, y=df.type.value_counts().values)
+
+    return fig.show()
 
 
 

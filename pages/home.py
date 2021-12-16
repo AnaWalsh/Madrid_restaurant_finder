@@ -35,14 +35,21 @@ def app():
 
     coord = sp.get_coordenadas(location)
 
-    df = sp.query(distance, coord, food_type_)
- 
+   
 
 
     if food_type_ == "Elige un tipo": 
         st.write("we need info")
-    else:
+        st.stop()
+    elif food_type_ == "Todos los restaurantes": # condicion cuando queremos todos los restaurantes
+        df_map_1 = sp.query_for_map2(distance, coord)
+        df_mostrar = df_map_1.drop(["latitude", 'longitude'], axis = 1)
+        st.dataframe(df_mostrar)
+        st.write("tenemos" , df_mostrar.shape[0], "restaurantes")
+        sp.map(df_map_1, coord)
+    else: # condición cuando pasamos un filtro de comida
         df_map= sp.query_for_map(distance, coord, food_type_)
-        print(df_map.columns)
-        st.dataframe(df)
+        df_mostrar = df_map.drop(["latitude", 'longitude'], axis = 1)
+        st.dataframe(df_mostrar)
+        st.write("tenemos" , df_mostrar.shape[0], "restaurantes")
         sp.map(df_map, coord)
