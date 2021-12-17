@@ -18,8 +18,8 @@ def app():
     st.write("""
     # ¿Cómo son los restaurantes que ofrece Madrid?
     """)
-    portada = Image.open("images/file-20180918-158240-1jd9gm6.jpeg")
-    st.image(portada, use_column_width=True)
+    #ortada = Image.open("images/file-20180918-158240-1jd9gm6.jpeg")
+    #st.image(portada, use_column_width=True)
 
 
     f=codecs.open("data/kepler.gl.html", 'r')

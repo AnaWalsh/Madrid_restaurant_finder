@@ -22,7 +22,7 @@ def app():
     """)
     st.write("""
     #### 
-    - Web scrapping Selenium [tripadvisor](https://www.tripadvisor.es/)
+    - Web scraping Selenium [tripadvisor](https://www.tripadvisor.es/)
     - Limpieza de datos
     - Llamadas a API (GeoPy)
     - Creación de base de datos en MongoDB Compass
